@@ -4,22 +4,19 @@ import Content from "./Content";
 import Footer from "./Footer";
 import emojipedia from "../emojipedia";
 
-function createEmoji(emojiItem) {
-  return (
-    <Content
-      key={emojiItem.id}
-      emoji={emojiItem.emoji}
-      name={emojiItem.name}
-      description={emojiItem.meaning}
-    />
-  );
-}
-
 function App() {
+  const createEmoji = emojipedia.map((emoji) => (
+    <Content
+      key={emoji.id}
+      emoji={emoji.emoji}
+      name={emoji.name}
+      description={emoji.meaning}
+    />
+  ));
   return (
     <>
       <Header />
-      <dl className="dictionary">{emojipedia.map(createEmoji)}</dl>
+      <dl className="dictionary">{createEmoji}</dl>
       <Footer />
     </>
   );
